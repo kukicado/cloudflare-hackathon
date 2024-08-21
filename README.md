@@ -1,5 +1,23 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Environment Setup
+
+Before running the application, you need to set up your environment variables. Create a `.env` file in the root directory of the project and add the following:
+
+
+Replace `your_mongodb_connection_string` with your actual MongoDB connection string. This should include your username, password, cluster information, and database name.
+
+For example:
+
+```
+MONGODB_URI=mongodb+srv://username:password@cluster0.mongodb.net/your_database_name?retryWrites=true&w=majority
+```
+
+
+Make sure to keep your `.env` file secure and never commit it to version control. Add `.env` to your `.gitignore` file if it's not already there.
+
+
+
 ## Getting Started
 
 First, run the development server:
