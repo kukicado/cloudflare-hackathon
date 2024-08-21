@@ -79,6 +79,7 @@ To use this worker, make sure you have the necessary Cloudflare Worker environme
 
 If you're deploying your own Cloudflare Worker, you'll need to update the URL in the `pages/api/proxy.js` file. Locate the following line:
 
-:pages/api/proxy.js
+```
 const response = await fetch('https://cloudlfare-hackathon.adoxyz.workers.dev/', {
+```
 
