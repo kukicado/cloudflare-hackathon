@@ -56,3 +56,29 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Cloudflare Worker
+
+This project includes a Cloudflare Worker that acts as a movie recommendation service. The worker file is located at `cloudflare-worker.js` in the root directory of the project.
+
+### How it works
+
+The Cloudflare Worker uses AI to determine if a suggested movie is a good fit for the user based on their preferences. Here's a brief overview of its functionality:
+
+1. It receives a POST request with a JSON payload containing `movieTitle` and `userPreferences`.
+2. The worker then creates a chat-style input for the AI model, including:
+   - A system message defining the AI's role as a movie oracle
+   - The suggested movie title
+   - The user's preferences
+3. The worker sends this input to the Cloudflare AI model (`@cf/meta/llama-3-8b-instruct`).
+4. Finally, it returns the AI's response as a JSON object.
+
+To use this worker, make sure you have the necessary Cloudflare Worker environment set up and deploy the `cloudflare-worker.js` file to your Cloudflare account.
+
+### Updating the Cloudflare Worker URL
+
+If you're deploying your own Cloudflare Worker, you'll need to update the URL in the `pages/api/proxy.js` file. Locate the following line:
+
+:pages/api/proxy.js
+const response = await fetch('https://cloudlfare-hackathon.adoxyz.workers.dev/', {
+
